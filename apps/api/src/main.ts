@@ -5,8 +5,8 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const webUrl = process.env.WEB_URL ?? 'http://localhost:3000';
-  const port = process.env.PORT ?? 9999;
+  const webUrl = process.env.WEB_URL;
+  const port = process.env.PORT as string;
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -21,7 +21,7 @@ async function bootstrap() {
   });
 
   await app.listen(port, () =>
-    console.log(`Server is running at http://localhost:${port}`),
+    console.log(`Backend:http://localhost:${port}`),
   );
 }
 bootstrap();

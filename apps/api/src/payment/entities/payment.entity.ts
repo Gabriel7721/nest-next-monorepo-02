@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
+
 export type PaymentDocument = HydratedDocument<Payment>;
 export type PaymentProvider = 'momo';
 export type PaymentStatus = 'pending' | 'success' | 'failed' | 'cancelled';
@@ -29,6 +30,7 @@ export class Payment {
 }
 
 export const PaymentSchema = SchemaFactory.createForClass(Payment);
+
 PaymentSchema.index({ orderId: 1 }, { unique: true });
 PaymentSchema.index({ requestId: 1 }, { unique: true });
 PaymentSchema.index({ userId: 1, createdAt: -1 });

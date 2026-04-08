@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
+
 export type PlaylistDocument = HydratedDocument<Playlist>;
 
 @Schema({ timestamps: true, collection: 'playlists' })
@@ -17,6 +18,7 @@ export class Playlist {
 }
 
 export const PlaylistSchema = SchemaFactory.createForClass(Playlist);
+
 PlaylistSchema.index({ owner: 1, createdAt: -1 });
 PlaylistSchema.index({ isPublic: 1, createdAt: -1 });
 PlaylistSchema.index({ owner: 1, name: 1 });

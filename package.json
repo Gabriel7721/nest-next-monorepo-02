@@ -8,10 +8,10 @@
     "build": "turbo run build",
     "test": "turbo run test",
     "lint": "turbo run lint",
-    "format":"turbo run format",
-    "type-check":"turbo run type-check",
-    "dev:web":"pnpm --filter web dev",
-    "dev:api":"pnpm --filter api start:dev"
+    "format": "turbo run format",
+    "type-check": "turbo run type-check",
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api start:dev"
   },
   "keywords": [],
   "author": "",
@@ -20,5 +20,9 @@
   "devDependencies": {
     "turbo": "^2.9.4",
     "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "@types/node": "^25.5.2",
+    "joi": "^18.1.2"
   }
 }

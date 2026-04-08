@@ -1,10 +1,8 @@
+import type { SubscriptionPlan, UserRole } from '@musical/shared-types';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
 export type UserDocument = HydratedDocument<User>;
-
-export type UserRole = 'user' | 'admin';
-export type SubscriptionPlan = 'free' | 'vip';
 
 @Schema({ timestamps: true, collection: 'users' })
 export class User {

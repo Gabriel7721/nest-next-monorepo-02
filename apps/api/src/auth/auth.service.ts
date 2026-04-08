@@ -7,10 +7,9 @@ import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
-
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
-import { JwtPayload } from './interface/jwt-payload.interface';
+import { JwtUser } from '@musical/shared-types';
 import { User, UserDocument } from '../users/entities/user.entity';
 
 @Injectable()
@@ -21,7 +20,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  private buildTokenPayload(user: UserDocument): JwtPayload {
+  private buildTokenPayload(user: UserDocument): JwtUser {
     return {
       sub: user._id.toString(),
       email: user.email,
@@ -89,7 +88,6 @@ export class AuthService {
 
   async login(loginDto: LoginDto) {
     const user = await this.validateUser(loginDto);
-
     const payload = this.buildTokenPayload(user);
     const accessToken = await this.jwtService.signAsync(payload);
 

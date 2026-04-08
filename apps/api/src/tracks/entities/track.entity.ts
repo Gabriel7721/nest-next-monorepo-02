@@ -2,6 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
 
 export type TrackDocument = HydratedDocument<Track>;
+
 @Schema({ timestamps: true, collection: 'tracks' })
 export class Track {
   @Prop({ required: true, trim: true, maxlength: 120 })
@@ -25,6 +26,7 @@ export class Track {
 }
 
 export const TrackSchema = SchemaFactory.createForClass(Track);
+
 TrackSchema.index({ title: 1 });
 TrackSchema.index({ artist: 1 });
 TrackSchema.index({ genre: 1 });
